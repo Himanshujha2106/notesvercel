@@ -16,3 +16,15 @@ def user_input_view(request):
 
     ans=UserCredentials.objects.get(username='himanshujha')
     return render(request, 'user_input.html', {'form': form,'name':ans.username})
+
+def index(request):
+    return render(request,'index.html')
+
+def passcheck(request):
+    key=request.POST.get('password')
+
+    if UserCredentials.objects.filter(password=key).exists():
+        note=UserCredentials.objects.get(password=key)
+        return HttpResponse(note)
+    else:
+        return HttpResponse("do not exists")
