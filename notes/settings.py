@@ -79,10 +79,15 @@ WSGI_APPLICATION = 'notes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'verceldb',  # Replace with your database name
+        'USER': 'default',   # Replace with your database username
+        'PASSWORD': 'gq4HdUnrtCc5',  # Replace with your database password
+        'HOST': 'ep-steep-term-a453anx6-pooler.us-east-1.aws.neon.tech',  # Replace with your database host
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
+
 
 
 # Password validation

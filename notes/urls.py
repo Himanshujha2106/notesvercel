@@ -1,8 +1,8 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from backend.views import user_input_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', user_input_view, name='user_input'),
+    path('', include('backend.urls')),
 ]
