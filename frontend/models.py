@@ -2,7 +2,7 @@ from django.db import models
 class UserCredentials(models.Model):
     username = models.CharField(max_length=50)
     password = models.CharField(max_length=128, unique=True)
-    notes = models.TextField(max_length=254)  # New field
+    notes = models.TextField(max_length=250)  # New field
 
     def __str__(self):
-        return self.password
+        return self.username

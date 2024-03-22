@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .forms import UserCredentialsForm
 from django.http import HttpResponse
-from django.core.management.base import BaseCommand
-from backend.models import UserCredentials
+from frontend.models import UserCredentials
 
 def user_input_view(request):
     if request.method == 'POST':
@@ -14,8 +13,8 @@ def user_input_view(request):
         form = UserCredentialsForm()
 
 
-    ans=UserCredentials.objects.get(username='himanshujha')
-    return render(request, 'user_input.html', {'form': form,'name':ans.username})
+    # ans=UserCredentials.objects.get(username='chirag')
+    return render(request, 'user_input.html', {'form': form})
 
 def index(request):
     return render(request,'index.html')
@@ -24,7 +23,7 @@ def passcheck(request):
     key=request.POST.get('password')
 
     if UserCredentials.objects.filter(password=key).exists():
-        note=UserCredentials.objects.get(password=key)
-        return HttpResponse(note)
+        note=UserCredentials.objects.get(username='himanshufinaal')
+        return HttpResponse("exists")
     else:
         return HttpResponse("do not exists")
