@@ -23,7 +23,7 @@ def passcheck(request):
     key=request.POST.get('password')
 
     if UserCredentials.objects.filter(password=key).exists():
-        note=UserCredentials.objects.get(username='himanshufinaal')
-        return HttpResponse("exists")
+        note=UserCredentials.objects.get(password=key)
+        return render(request,'success.html',{"body":note.notes,"result":1})
     else:
-        return HttpResponse("do not exists")
+        return render(request,'success.html',{"name":"none","result":0})
