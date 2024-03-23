@@ -8,9 +8,9 @@ def user_input_view(request):
         form = UserCredentialsForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request,'success.html')  # Redirect to a success page or another URL
-    else:
-        form = UserCredentialsForm()
+            a="Registered succesfully"
+            return render(request,'success.html',{"body":a})  # Redirect to a success page or another URL
+    
 
 
     # ans=UserCredentials.objects.get(username='chirag')
@@ -21,9 +21,11 @@ def index(request):
 
 def passcheck(request):
     key=request.POST.get('password')
-
-    if UserCredentials.objects.filter(password=key).exists():
+    a=UserCredentials.objects.filter(password=key).exists()
+    if a:
         note=UserCredentials.objects.get(password=key)
-        return render(request,'success.html',{"body":note.notes,"result":1})
+        return render(request,'success.html',{"body":note.notes})
     else:
-        return render(request,'success.html',{"name":"none","result":0})
+        a="wrong password,Try again"
+        return render(request,'success.html',{"body":a})
+
