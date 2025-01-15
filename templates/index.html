@@ -6,56 +6,91 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 50px;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: center;
     }
     
     h1 {
-      text-align: center;
       margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
     }
     
     form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       margin-bottom: 20px;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
     }
     
     label {
-      margin-bottom: 5px;
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #555;
     }
     
-    input[type="text"], button {
+    input[type="text"] {
       width: 100%;
       padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
     }
     
     button {
+      width: 100%;
+      padding: 12px;
       background-color: #4CAF50;
-      color: white;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
       cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    .divider {
+      margin: 20px 0;
+      font-size: 14px;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <h1>Login</h1>
-  <form method="post" action="passcheck">
-    {% csrf_token %}
-    <label for="password">Password:</label>
-    <input type="text" id="password" name="password"><br>
-    <button type="submit">Submit</button>
-  </form>
-  
-  <h1>New User</h1>
-  <form method="post" action="usercreation">
-    {% csrf_token %}
-    <button type="submit">Register</button>
-  </form>
+  <div class="container">
+    <h1>Login</h1>
+    <form method="post" action="passcheck">
+      {% csrf_token %}
+      <label for="password">Password:</label>
+      <input type="text" id="password" name="password" placeholder="Enter your password">
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="divider">or</div>
+
+    <h1>New User</h1>
+    <form method="post" action="usercreation">
+      {% csrf_token %}
+      <button type="submit">Register</button>
+    </form>
+  </div>
 </body>
 </html>
